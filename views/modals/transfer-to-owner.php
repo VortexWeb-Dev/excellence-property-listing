@@ -78,7 +78,7 @@
         const formData = new FormData(e.target);
 
         const fields = {
-            "ufCrm12ListingOwner": formData.get('listing_owner'),
+            "ufCrm6ListingOwner": formData.get('listing_owner'),
         };
 
         const propertyIds = formData.get('transferOwnerPropertyIds').split(',');

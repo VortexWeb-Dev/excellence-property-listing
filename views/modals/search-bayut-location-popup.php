@@ -43,7 +43,7 @@
             const webhookUrl = `${API_BASE_URL}crm.item.list`;
             const data = {
                 entityTypeId: BAYUT_LOCATIONS_ENTITY_ID,
-                select: ["id", "ufCrm12Location", "ufCrm12City", "ufCrm12Community", "ufCrm12SubCommunity", "ufCrm12Building"],
+                select: ["id", "ufCrm6Location", "ufCrm6City", "ufCrm6Community", "ufCrm6SubCommunity", "ufCrm6Building"],
                 filter: {
                     "%ufCrm12Location": query
                 }

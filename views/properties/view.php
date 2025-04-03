@@ -82,12 +82,12 @@
         if (data.result && data.result.item) {
             const property = data.result.item;
 
-            document.getElementById('property-title').textContent = property.ufCrm12TitleEn || 'No title available';
-            document.getElementById('property-description').innerHTML = '<pre>' + property.ufCrm12DescriptionEn + '</pre>' || 'No description available';
-            document.getElementById('property-city').textContent = property.ufCrm12City || 'N/A';
-            document.getElementById('property-community').textContent = property.ufCrm12Community || 'N/A';
-            let priceText = property.ufCrm12Price ? formatPrice(property.ufCrm12Price) : 'N/A';
-            if (property.ufCrm12RentalPeriod && property.ufCrm12RentalPrice) {
+            document.getElementById('property-title').textContent = property.ufCrm6TitleEn || 'No title available';
+            document.getElementById('property-description').innerHTML = '<pre>' + property.ufCrm6DescriptionEn + '</pre>' || 'No description available';
+            document.getElementById('property-city').textContent = property.ufCrm6City || 'N/A';
+            document.getElementById('property-community').textContent = property.ufCrm6Community || 'N/A';
+            let priceText = property.ufCrm6Price ? formatPrice(property.ufCrm6Price) : 'N/A';
+            if (property.ufCrm6RentalPeriod && property.ufCrm6RentalPrice) {
                 const rentalPeriodMapping = {
                     Y: 'Year',
                     M: 'Month',
@@ -95,23 +95,23 @@
                     D: 'Day',
                 };
 
-                const rentalPeriod = rentalPeriodMapping[property.ufCrm12RentalPrice] || property.ufCrm12RentalPeriod;
+                const rentalPeriod = rentalPeriodMapping[property.ufCrm6RentalPrice] || property.ufCrm6RentalPeriod;
                 priceText += `/ ${rentalPeriod}`;
             }
             document.getElementById('property-price').textContent = priceText;
-            document.getElementById('property-size').textContent = property.ufCrm12Size ? `${property.ufCrm12Size} sqft` : 'N/A';
-            document.getElementById('property-bedrooms').textContent = property.ufCrm12Bedroom || 'N/A';
-            document.getElementById('property-bathrooms').textContent = property.ufCrm12Bathroom || 'N/A';
-            document.getElementById('property-type').textContent = property.ufCrm12PropertyType || 'N/A';
-            document.getElementById('property-location').textContent = property.ufCrm12Location || 'N/A';
-            document.getElementById('property-status').textContent = property.ufCrm12Status || 'N/A';
-            document.getElementById('property-owner').textContent = property.ufCrm12ListingOwner || 'N/A';
-            document.getElementById('agent-name').textContent = property.ufCrm12AgentName || 'N/A';
-            document.getElementById('agent-phone').textContent = property.ufCrm12AgentPhone || 'N/A';
-            document.getElementById('agent-email').textContent = property.ufCrm12AgentEmail || 'N/A';
-            document.getElementById('main-image').src = property.ufCrm12PhotoLinks[0] || 'https://placehold.jp/150x150.png';
+            document.getElementById('property-size').textContent = property.ufCrm6Size ? `${property.ufCrm6Size} sqft` : 'N/A';
+            document.getElementById('property-bedrooms').textContent = property.ufCrm6Bedroom || 'N/A';
+            document.getElementById('property-bathrooms').textContent = property.ufCrm6Bathroom || 'N/A';
+            document.getElementById('property-type').textContent = property.ufCrm6PropertyType || 'N/A';
+            document.getElementById('property-location').textContent = property.ufCrm6Location || 'N/A';
+            document.getElementById('property-status').textContent = property.ufCrm6Status || 'N/A';
+            document.getElementById('property-owner').textContent = property.ufCrm6ListingOwner || 'N/A';
+            document.getElementById('agent-name').textContent = property.ufCrm6AgentName || 'N/A';
+            document.getElementById('agent-phone').textContent = property.ufCrm6AgentPhone || 'N/A';
+            document.getElementById('agent-email').textContent = property.ufCrm6AgentEmail || 'N/A';
+            document.getElementById('main-image').src = property.ufCrm6PhotoLinks[0] || 'https://placehold.jp/150x150.png';
 
-            const images = property.ufCrm12PhotoLinks || [];
+            const images = property.ufCrm6PhotoLinks || [];
             const imageContainer = document.getElementById('property-images');
             images.forEach(image => {
                 const imageElement = document.createElement('img');
@@ -137,7 +137,7 @@
                 }
             }
 
-            const comments = property.ufCrm12Notes || [];
+            const comments = property.ufCrm6Notes || [];
             const commentsContainer = document.getElementById("property-comments");
 
             if (comments.length === 0) {

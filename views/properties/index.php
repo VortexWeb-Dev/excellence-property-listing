@@ -65,7 +65,7 @@
         const baseUrl = API_BASE_URL;
         const entityTypeId = LISTINGS_ENTITY_TYPE_ID;
         const fields = [
-            'id', 'ufCrm12ReferenceNumber', 'ufCrm12OfferingType', 'ufCrm12PropertyType', 'ufCrm12Price', 'ufCrm12TitleEn', 'ufCrm12DescriptionEn', 'ufCrm12Size', 'ufCrm12Bedroom', 'ufCrm12Bathroom', 'ufCrm12PhotoLinks', 'ufCrm12AgentName', 'ufCrm12City', 'ufCrm12Community', 'ufCrm12SubCommunity', 'ufCrm12Tower', 'ufCrm12BayutCity', 'ufCrm12BayutCommunity', 'ufCrm12BayutSubCommunity', 'ufCrm12BayutTower', 'ufCrm12PfEnable', 'ufCrm12BayutEnable', 'ufCrm12DubizzleEnable', 'ufCrm12WebsiteEnable', 'ufCrm12ListingOwner', 'ufCrm12Status', 'ufCrm12RentalPeriod', 'createdTime', 'ufCrm12TitleDeed'
+            'id', 'ufCrm6ReferenceNumber', 'ufCrm6OfferingType', 'ufCrm6PropertyType', 'ufCrm6Price', 'ufCrm6TitleEn', 'ufCrm6DescriptionEn', 'ufCrm6Size', 'ufCrm6Bedroom', 'ufCrm6Bathroom', 'ufCrm6PhotoLinks', 'ufCrm6AgentName', 'ufCrm6City', 'ufCrm6Community', 'ufCrm6SubCommunity', 'ufCrm6Tower', 'ufCrm6BayutCity', 'ufCrm6BayutCommunity', 'ufCrm6BayutSubCommunity', 'ufCrm6BayutTower', 'ufCrm6PfEnable', 'ufCrm6BayutEnable', 'ufCrm6DubizzleEnable', 'ufCrm6WebsiteEnable', 'ufCrm6ListingOwner', 'ufCrm6Status', 'ufCrm6RentalPeriod', 'createdTime', 'ufCrm6TitleDeed'
         ];
         const orderBy = {
             id: 'desc'
@@ -149,7 +149,7 @@
                                 <li><a class="dropdown-item" href="?page=edit-property&id=${property.id}"><i class="fa-solid fa-edit me-2"></i>Edit</a></li>
                                 <li><button class="dropdown-item" onclick="handleAction('duplicate', ${property.id})"><i class="fa-solid fa-copy me-2"></i>Duplicate Listing</button></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#referenceModal" data-property-id="${property.id}" data-reference="${property.ufCrm12ReferenceNumber}">
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#referenceModal" data-property-id="${property.id}" data-reference="${property.ufCrm6ReferenceNumber}">
                                         <i class="fa-solid fa-sync me-2"></i>Refresh Listing
                                     </a>
                                 </li>
@@ -180,87 +180,87 @@
                             </ul>
                         </div>
                     </td>
-                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm12ReferenceNumber || 'N/A'}</td>
-                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm12TitleDeed || ''}</td>
+                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm6ReferenceNumber || 'N/A'}</td>
+                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm6TitleDeed || ''}</td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 min-w-[300px]">
                         <div class="flex">
-                            <img class="w-20 h-20 rounded object-cover mr-4" src="${property.ufCrm12PhotoLinks[0] || 'https://placehold.jp/150x150.png'}" alt="${property.ufCrm12TitleEn || 'N/A'}">
+                            <img class="w-20 h-20 rounded object-cover mr-4" src="${property.ufCrm6PhotoLinks[0] || 'https://placehold.jp/150x150.png'}" alt="${property.ufCrm6TitleEn || 'N/A'}">
                             <div class="text-sm">
-                                <p class="text-gray-800 font-semibold"><a class="hover:text-black/75 text-black text-semibold text-wrap text-decoration-none" href="?page=view-property&id=${property.id}">${property.ufCrm12TitleEn || 'N/A'}</a></p>
-                                <p class="text-gray-400 text-wrap max-w-full truncate">${property.ufCrm12DescriptionEn.slice(0, 60) + '...' || 'N/A'}</p>
+                                <p class="text-gray-800 font-semibold"><a class="hover:text-black/75 text-black text-semibold text-wrap text-decoration-none" href="?page=view-property&id=${property.id}">${property.ufCrm6TitleEn || 'N/A'}</a></p>
+                                <p class="text-gray-400 text-wrap max-w-full truncate">${property.ufCrm6DescriptionEn.slice(0, 60) + '...' || 'N/A'}</p>
                             </div>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex flex-col items-start gap-1">
-                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-bath mr-1"></i>${property.ufCrm12Bathroom || 'N/A'}</span>
-                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-bed mr-1"></i>${property.ufCrm12Bedroom === 0 ? 'Studio' : property.ufCrm12Bedroom === 11 ? '10+' : property.ufCrm12Bedroom || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-bath mr-1"></i>${property.ufCrm6Bathroom || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-bed mr-1"></i>${property.ufCrm6Bedroom === 0 ? 'Studio' : property.ufCrm6Bedroom === 11 ? '10+' : property.ufCrm6Bedroom || 'N/A'}</span>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex flex-col items-start gap-1">
-                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-ruler-combined mr-1"></i>${property.ufCrm12Size + ' sqft' || 'N/A'}</span>
-                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-ruler-horizontal mr-1"></i>${sqftToSqm(property.ufCrm12Size) + ' sqm' || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-ruler-combined mr-1"></i>${property.ufCrm6Size + ' sqft' || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-ruler-horizontal mr-1"></i>${sqftToSqm(property.ufCrm6Size) + ' sqm' || 'N/A'}</span>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         ${
-                            property.ufCrm12Price 
-                                ? `${formatPrice(property.ufCrm12Price)}${property.ufCrm12OfferingType === 'RR' || property.ufCrm12OfferingType === 'CR' 
-                                    ? `/${property.ufCrm12RentalPeriod === 'Y' ? 'Year' : property.ufCrm12RentalPeriod === 'M' ? 'Month' : property.ufCrm12RentalPeriod === 'W' ? 'Week' : property.ufCrm12RentalPeriod === 'D' ? 'Day' : ''} - Rent`
-                                    : (property.ufCrm12OfferingType === 'CS' || property.ufCrm12OfferingType === 'RS' ? ' - Sale' : '')}`
+                            property.ufCrm6Price 
+                                ? `${formatPrice(property.ufCrm6Price)}${property.ufCrm6OfferingType === 'RR' || property.ufCrm6OfferingType === 'CR' 
+                                    ? `/${property.ufCrm6RentalPeriod === 'Y' ? 'Year' : property.ufCrm6RentalPeriod === 'M' ? 'Month' : property.ufCrm6RentalPeriod === 'W' ? 'Week' : property.ufCrm6RentalPeriod === 'D' ? 'Day' : ''} - Rent`
+                                    : (property.ufCrm6OfferingType === 'CS' || property.ufCrm6OfferingType === 'RS' ? ' - Sale' : '')}`
                                 : ''
                         }
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
-                        ${getStatusBadge(property.ufCrm12Status)}
+                        ${getStatusBadge(property.ufCrm6Status)}
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <p>
                             ${[
-                                property.ufCrm12City,
-                                property.ufCrm12Community,
+                                property.ufCrm6City,
+                                property.ufCrm6Community,
                             ]
                             .filter(Boolean)
                             .join(' - ') || ''}
                         </p>
                         <p>
                             ${[
-                                property.ufCrm12SubCommunity,
-                                property.ufCrm12Tower
-                            ]
-                            .filter(Boolean)
-                            .join(' - ') || ''}
-                        </p>
-                    </td>
-                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
-                        <p>
-                            ${[
-                                property.ufCrm12BayutCity,
-                                property.ufCrm12BayutCommunity,
-                            ]
-                            .filter(Boolean)
-                            .join(' - ') || ''}
-                        </p>
-                        <p>
-                            ${[
-                                property.ufCrm12BayutSubCommunity,
-                                property.ufCrm12BayutTower
+                                property.ufCrm6SubCommunity,
+                                property.ufCrm6Tower
                             ]
                             .filter(Boolean)
                             .join(' - ') || ''}
                         </p>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
-                        <p class="">${property.ufCrm12AgentName || ''}</p> 
-                        <p class="">${property.ufCrm12ListingOwner || ''}</p> 
+                        <p>
+                            ${[
+                                property.ufCrm6BayutCity,
+                                property.ufCrm6BayutCommunity,
+                            ]
+                            .filter(Boolean)
+                            .join(' - ') || ''}
+                        </p>
+                        <p>
+                            ${[
+                                property.ufCrm6BayutSubCommunity,
+                                property.ufCrm6BayutTower
+                            ]
+                            .filter(Boolean)
+                            .join(' - ') || ''}
+                        </p>
+                    </td>
+                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
+                        <p class="">${property.ufCrm6AgentName || ''}</p> 
+                        <p class="">${property.ufCrm6ListingOwner || ''}</p> 
                     </td>
                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex gap-1">
-                            ${property.ufCrm12PfEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/pf.png" alt="Property Finder" title="Property Finder">' : ''}
-                            ${property.ufCrm12BayutEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/bayut.png" alt="Bayut" title="Bayut">' : ''}
-                            ${property.ufCrm12DubizzleEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/dubizzle.png" alt="Dubizzle" title="Dubizzle">' : ''}
-                            ${property.ufCrm12WebsiteEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/company-logo.png" alt="Excellence Ambassadors Real Estate" title="Excellence Ambassadors Real Estate">' : ''}
+                            ${property.ufCrm6PfEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/pf.png" alt="Property Finder" title="Property Finder">' : ''}
+                            ${property.ufCrm6BayutEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/bayut.png" alt="Bayut" title="Bayut">' : ''}
+                            ${property.ufCrm6DubizzleEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/dubizzle.png" alt="Dubizzle" title="Dubizzle">' : ''}
+                            ${property.ufCrm6WebsiteEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/company-logo.png" alt="Excellence Ambassadors Real Estate" title="Excellence Ambassadors Real Estate">' : ''}
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">

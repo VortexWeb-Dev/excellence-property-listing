@@ -95,67 +95,67 @@
         const agent = await getAgent(data.listing_agent);
 
         const fields = {
-            "ufCrm12TitleDeed": data.title_deed,
-            "ufCrm12ReferenceNumber": data.reference,
-            "ufCrm12OfferingType": data.offering_type,
-            "ufCrm12PropertyType": data.property_type,
-            "ufCrm12Price": data.price,
-            "ufCrm12TitleEn": data.title_en,
-            "ufCrm12DescriptionEn": data.description_en,
-            "ufCrm12TitleAr": data.title_ar,
-            "ufCrm12DescriptionAr": data.description_ar,
-            "ufCrm12Size": data.size,
-            "ufCrm12Bedroom": data.bedrooms,
-            "ufCrm12Bathroom": data.bathrooms,
-            "ufCrm12Parking": data.parkings,
-            "ufCrm12Geopoints": `${data.latitude}, ${data.longitude}`,
-            "ufCrm12PermitNumber": data.dtcm_permit_number,
-            "ufCrm12RentalPeriod": data.rental_period,
-            "ufCrm12City": data.bayut_city,
-            "ufCrm12Community": data.bayut_community,
-            "ufCrm12SubCommunity": data.bayut_subcommunity,
-            "ufCrm12Furnished": data.furnished,
-            "ufCrm12TotalPlotSize": data.total_plot_size,
-            "ufCrm12LotSize": data.lot_size,
-            "ufCrm12BuildupArea": data.buildup_area,
-            "ufCrm12LayoutType": data.layout_type,
-            "ufCrm12ProjectName": data.project_name,
-            "ufCrm12ProjectStatus": data.project_status,
-            "ufCrm12Ownership": data.ownership,
-            "ufCrm12Developers": data.developer,
-            "ufCrm12BuildYear": data.build_year,
-            "ufCrm12Availability": data.availability,
-            "ufCrm12AvailableFrom": data.available_from,
-            "ufCrm12PaymentMethod": data.payment_method,
-            "ufCrm12DownPaymentPrice": data.downpayment_price,
-            "ufCrm12NoOfCheques": data.cheques,
-            "ufCrm12ServiceCharge": data.service_charge,
-            "ufCrm12FinancialStatus": data.financial_status,
-            "ufCrm12VideoTourUrl": data.video_tour_url,
+            "ufCrm6TitleDeed": data.title_deed,
+            "ufCrm6ReferenceNumber": data.reference,
+            "ufCrm6OfferingType": data.offering_type,
+            "ufCrm6PropertyType": data.property_type,
+            "ufCrm6Price": data.price,
+            "ufCrm6TitleEn": data.title_en,
+            "ufCrm6DescriptionEn": data.description_en,
+            "ufCrm6TitleAr": data.title_ar,
+            "ufCrm6DescriptionAr": data.description_ar,
+            "ufCrm6Size": data.size,
+            "ufCrm6Bedroom": data.bedrooms,
+            "ufCrm6Bathroom": data.bathrooms,
+            "ufCrm6Parking": data.parkings,
+            "ufCrm6Geopoints": `${data.latitude}, ${data.longitude}`,
+            "ufCrm6PermitNumber": data.dtcm_permit_number,
+            "ufCrm6RentalPeriod": data.rental_period,
+            "ufCrm6City": data.bayut_city,
+            "ufCrm6Community": data.bayut_community,
+            "ufCrm6SubCommunity": data.bayut_subcommunity,
+            "ufCrm6Furnished": data.furnished,
+            "ufCrm6TotalPlotSize": data.total_plot_size,
+            "ufCrm6LotSize": data.lot_size,
+            "ufCrm6BuildupArea": data.buildup_area,
+            "ufCrm6LayoutType": data.layout_type,
+            "ufCrm6ProjectName": data.project_name,
+            "ufCrm6ProjectStatus": data.project_status,
+            "ufCrm6Ownership": data.ownership,
+            "ufCrm6Developers": data.developer,
+            "ufCrm6BuildYear": data.build_year,
+            "ufCrm6Availability": data.availability,
+            "ufCrm6AvailableFrom": data.available_from,
+            "ufCrm6PaymentMethod": data.payment_method,
+            "ufCrm6DownPaymentPrice": data.downpayment_price,
+            "ufCrm6NoOfCheques": data.cheques,
+            "ufCrm6ServiceCharge": data.service_charge,
+            "ufCrm6FinancialStatus": data.financial_status,
+            "ufCrm6VideoTourUrl": data.video_tour_url,
             "ufCrm_12_360_VIEW_URL": data["360_view_url"],
-            "ufCrm12QrCodePropertyBooster": data.qr_code_url,
+            "ufCrm6QrCodePropertyBooster": data.qr_code_url,
 
-            "ufCrm12Location": data.pf_location,
-            "ufCrm12City": data.pf_city,
-            "ufCrm12Community": data.pf_community,
-            "ufCrm12SubCommunity": data.pf_subcommunity,
-            "ufCrm12Tower": data.pf_building,
-            "ufCrm12BayutLocation": data.bayut_location,
-            "ufCrm12BayutCity": data.bayut_city,
-            "ufCrm12BayutCommunity": data.bayut_community,
-            "ufCrm12BayutSubCommunity": data.bayut_subcommunity,
-            "ufCrm12BayutTower": data.bayut_building,
+            "ufCrm6Location": data.pf_location,
+            "ufCrm6City": data.pf_city,
+            "ufCrm6Community": data.pf_community,
+            "ufCrm6SubCommunity": data.pf_subcommunity,
+            "ufCrm6Tower": data.pf_building,
+            "ufCrm6BayutLocation": data.bayut_location,
+            "ufCrm6BayutCity": data.bayut_city,
+            "ufCrm6BayutCommunity": data.bayut_community,
+            "ufCrm6BayutSubCommunity": data.bayut_subcommunity,
+            "ufCrm6BayutTower": data.bayut_building,
 
-            "ufCrm12Status": data.status,
-            "ufCrm12ReraPermitNumber": data.rera_permit_number,
-            "ufCrm12ReraPermitIssueDate": data.rera_issue_date,
-            "ufCrm12ReraPermitExpirationDate": data.rera_expiration_date,
-            "ufCrm12DtcmPermitNumber": data.dtcm_permit_number,
-            "ufCrm12ListingOwner": data.listing_owner,
+            "ufCrm6Status": data.status,
+            "ufCrm6ReraPermitNumber": data.rera_permit_number,
+            "ufCrm6ReraPermitIssueDate": data.rera_issue_date,
+            "ufCrm6ReraPermitExpirationDate": data.rera_expiration_date,
+            "ufCrm6DtcmPermitNumber": data.dtcm_permit_number,
+            "ufCrm6ListingOwner": data.listing_owner,
             // Landlord 1
-            "ufCrm12LandlordName": data.landlord_name,
-            "ufCrm12LandlordEmail": data.landlord_email,
-            "ufCrm12LandlordContact": data.landlord_phone,
+            "ufCrm6LandlordName": data.landlord_name,
+            "ufCrm6LandlordEmail": data.landlord_email,
+            "ufCrm6LandlordContact": data.landlord_phone,
             // Landlord 2
             "ufCrm_12_LANDLORD_NAME_2": data.landlord_name2,
             "ufCrm_12_LANDLORD_EMAIL_2": data.landlord_email2,
@@ -165,41 +165,41 @@
             "ufCrm_12_LANDLORD_EMAIL_3": data.landlord_email3,
             "ufCrm_12_LANDLORD_CONTACT_3": data.landlord_phone3,
 
-            "ufCrm12ContractExpiryDate": data.contract_expiry,
-            "ufCrm12UnitNo": data.unit_no,
-            "ufCrm12SaleType": data.sale_type,
-            "ufCrm12BrochureDescription": data.brochure_description_1,
+            "ufCrm6ContractExpiryDate": data.contract_expiry,
+            "ufCrm6UnitNo": data.unit_no,
+            "ufCrm6SaleType": data.sale_type,
+            "ufCrm6BrochureDescription": data.brochure_description_1,
             "ufCrm_12_BROCHURE_DESCRIPTION_2": data.brochure_description_2,
 
-            "ufCrm12HidePrice": data.hide_price === "on" ? "Y" : "N",
-            "ufCrm12PfEnable": data.pf_enable === "on" ? "Y" : "N",
-            "ufCrm12BayutEnable": data.bayut_enable === "on" ? "Y" : "N",
-            "ufCrm12DubizzleEnable": data.dubizzle_enable === "on" ? "Y" : "N",
-            "ufCrm12WebsiteEnable": data.website_enable === "on" ? "Y" : "N",
-            "ufCrm12Watermark": data.watermark === "on" ? "Y" : "N",
+            "ufCrm6HidePrice": data.hide_price === "on" ? "Y" : "N",
+            "ufCrm6PfEnable": data.pf_enable === "on" ? "Y" : "N",
+            "ufCrm6BayutEnable": data.bayut_enable === "on" ? "Y" : "N",
+            "ufCrm6DubizzleEnable": data.dubizzle_enable === "on" ? "Y" : "N",
+            "ufCrm6WebsiteEnable": data.website_enable === "on" ? "Y" : "N",
+            "ufCrm6Watermark": data.watermark === "on" ? "Y" : "N",
         };
 
         if (agent) {
             Object.assign(fields, {
-                "ufCrm12AgentId": agent.ufCrm12AgentId,
-                "ufCrm12AgentName": agent.ufCrm12AgentName,
-                "ufCrm12AgentEmail": agent.ufCrm12AgentEmail,
-                "ufCrm12AgentPhone": agent.ufCrm12AgentMobile,
-                "ufCrm12AgentPhoto": agent.ufCrm12AgentPhoto,
-                "ufCrm12AgentLicense": agent.ufCrm12AgentLicense,
+                "ufCrm6AgentId": agent.ufCrm8AgentId,
+                "ufCrm6AgentName": agent.ufCrm8AgentName,
+                "ufCrm6AgentEmail": agent.ufCrm8AgentEmail,
+                "ufCrm6AgentPhone": agent.ufCrm8AgentMobile,
+                "ufCrm6AgentPhoto": agent.ufCrm8AgentPhoto,
+                "ufCrm6AgentLicense": agent.ufCrm8AgentLicense,
             });
         }
 
         const notesString = data.notes;
         if (notesString) {
             const notesArray = JSON.parse(notesString);
-            fields["ufCrm12Notes"] = notesArray;
+            fields["ufCrm6Notes"] = notesArray;
         }
 
         const amenitiesString = data.amenities;
         if (amenitiesString) {
             const amenitiesArray = JSON.parse(amenitiesString);
-            fields["ufCrm12Amenities"] = amenitiesArray;
+            fields["ufCrm6Amenities"] = amenitiesArray;
         }
 
         const photos = document.getElementById('selectedImages').value;
@@ -214,9 +214,9 @@
                 const watermarkPath = 'assets/images/watermark.png?cache=' + Date.now();
                 const uploadedImages = await processBase64Images(photoArray, watermarkPath);
 
-                fields["ufCrm12PhotoLinks"] = uploadedImages.length > 0 ? [...existingPhotos, ...uploadedImages] : [...existingPhotos];
+                fields["ufCrm6PhotoLinks"] = uploadedImages.length > 0 ? [...existingPhotos, ...uploadedImages] : [...existingPhotos];
             } else {
-                fields["ufCrm12PhotoLinks"] = [...existingPhotos];
+                fields["ufCrm6PhotoLinks"] = [...existingPhotos];
             }
         }
 
@@ -234,16 +234,16 @@
                 const uploadedFloorplans = await processBase64Images(floorplanArray, watermarkPath);
 
 
-                fields["ufCrm12FloorPlan"] = uploadedFloorplans.length > 0 ?
+                fields["ufCrm6FloorPlan"] = uploadedFloorplans.length > 0 ?
                     uploadedFloorplans[0] :
                     existingFloorplans[0] || null;
             } else {
 
-                fields["ufCrm12FloorPlan"] = existingFloorplans[0] || null;
+                fields["ufCrm6FloorPlan"] = existingFloorplans[0] || null;
             }
         } else {
 
-            fields["ufCrm12FloorPlan"] = null;
+            fields["ufCrm6FloorPlan"] = null;
         }
 
 
@@ -258,7 +258,7 @@
                 type: "photos",
                 newLinks: [],
                 selectedFiles: [],
-                existingLinks: property['ufCrm12PhotoLinks'] || [],
+                existingLinks: property['ufCrm6PhotoLinks'] || [],
                 newPreviewContainer: document.getElementById('newPhotoPreviewContainer'),
                 existingPreviewContainer: document.getElementById('existingPhotoPreviewContainer'),
                 selectedInput: document.getElementById('selectedImages'),
@@ -268,7 +268,7 @@
                 type: "floorplan",
                 newLinks: [],
                 selectedFiles: [],
-                existingLinks: property['ufCrm12FloorPlan'] ? [property['ufCrm12FloorPlan']] : [],
+                existingLinks: property['ufCrm6FloorPlan'] ? [property['ufCrm6FloorPlan']] : [],
                 newPreviewContainer: document.getElementById('newFloorplanPreviewContainer'),
                 existingPreviewContainer: document.getElementById('existingFloorplanPreviewContainer'),
                 selectedInput: document.getElementById('selectedFloorplan'),

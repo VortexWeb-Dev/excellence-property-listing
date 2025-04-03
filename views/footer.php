@@ -77,7 +77,7 @@
         const newReference = formData.get('newReference');
 
         try {
-            const response = await fetch(`${API_BASE_URL}crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm12ReferenceNumber]=${newReference}`);
+            const response = await fetch(`${API_BASE_URL}crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm6ReferenceNumber]=${newReference}`);
             const data = await response.json();
             location.reload();
         } catch (error) {
@@ -146,34 +146,34 @@
                     let addUrl = `${baseUrl}/crm.item.add?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}`;
                     for (const field in property) {
                         if (
-                            field.startsWith('ufCrm12') &&
-                            !['ufCrm12ReferenceNumber', 'ufCrm12TitleEn', 'ufCrm12Status', 'ufCrm12PhotoLinks', 'ufCrm12Documents', 'ufCrm12Notes'].includes(field)
+                            field.startsWith('ufCrm6') &&
+                            !['ufCrm6ReferenceNumber', 'ufCrm6TitleEn', 'ufCrm6Status', 'ufCrm6PhotoLinks', 'ufCrm6Documents', 'ufCrm6Notes'].includes(field)
                         ) {
                             addUrl += `&fields[${field}]=${encodeURIComponent(property[field])}`;
                         }
                     }
 
-                    if (property['ufCrm12PhotoLinks']) {
-                        property['ufCrm12PhotoLinks'].forEach((photoLink, index) => {
-                            addUrl += `&fields[ufCrm12PhotoLinks][${index}]=${encodeURIComponent(photoLink)}`;
+                    if (property['ufCrm6PhotoLinks']) {
+                        property['ufCrm6PhotoLinks'].forEach((photoLink, index) => {
+                            addUrl += `&fields[ufCrm6PhotoLinks][${index}]=${encodeURIComponent(photoLink)}`;
                         });
                     }
 
-                    if (property['ufCrm12Documents']) {
-                        property['ufCrm12Documents'].forEach((document, index) => {
-                            addUrl += `&fields[ufCrm12Documents][${index}]=${encodeURIComponent(document)}`;
+                    if (property['ufCrm6Documents']) {
+                        property['ufCrm6Documents'].forEach((document, index) => {
+                            addUrl += `&fields[ufCrm6Documents][${index}]=${encodeURIComponent(document)}`;
                         });
                     }
 
-                    if (property['ufCrm12Notes']) {
-                        property['ufCrm12Notes'].forEach((note, index) => {
-                            addUrl += `&fields[ufCrm12Notes][${index}]=${encodeURIComponent(note)}`;
+                    if (property['ufCrm6Notes']) {
+                        property['ufCrm6Notes'].forEach((note, index) => {
+                            addUrl += `&fields[ufCrm6Notes][${index}]=${encodeURIComponent(note)}`;
                         });
                     }
 
-                    addUrl += `&fields[ufCrm12TitleEn]=${encodeURIComponent(property.ufCrm12TitleEn + ' (Duplicate)')}`;
-                    addUrl += `&fields[ufCrm12ReferenceNumber]=${encodeURIComponent(property.ufCrm12ReferenceNumber) + '-duplicate'}`;
-                    addUrl += `&fields[ufCrm12Status]=DRAFT`;
+                    addUrl += `&fields[ufCrm6TitleEn]=${encodeURIComponent(property.ufCrm6TitleEn + ' (Duplicate)')}`;
+                    addUrl += `&fields[ufCrm6ReferenceNumber]=${encodeURIComponent(property.ufCrm6ReferenceNumber) + '-duplicate'}`;
+                    addUrl += `&fields[ufCrm6Status]=DRAFT`;
 
                     await fetch(addUrl, {
                         method: 'GET'
@@ -184,26 +184,26 @@
                 break;
 
             case 'publish':
-                apiUrl = `${baseUrl}/crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm12Status]=PUBLISHED`;
+                apiUrl = `${baseUrl}/crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm6Status]=PUBLISHED`;
                 if (platform) {
-                    apiUrl += `&fields[ufCrm12${platform.charAt(0).toUpperCase() + platform.slice(1)}Enable]=Y`;
+                    apiUrl += `&fields[ufCrm6${platform.charAt(0).toUpperCase() + platform.slice(1)}Enable]=Y`;
                 } else {
-                    apiUrl += `&fields[ufCrm12PfEnable]=Y&fields[ufCrm12BayutEnable]=Y&fields[ufCrm12DubizzleEnable]=Y&fields[ufCrm12WebsiteEnable]=Y&fields[ufCrm12Status]=PUBLISHED`;
+                    apiUrl += `&fields[ufCrm6PfEnable]=Y&fields[ufCrm6BayutEnable]=Y&fields[ufCrm6DubizzleEnable]=Y&fields[ufCrm6WebsiteEnable]=Y&fields[ufCrm6Status]=PUBLISHED`;
                 }
                 break;
 
             case 'unpublish':
                 apiUrl = `${baseUrl}/crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}`;
                 if (platform) {
-                    apiUrl += `&fields[ufCrm12${platform.charAt(0).toUpperCase() + platform.slice(1)}Enable]=N`;
+                    apiUrl += `&fields[ufCrm6${platform.charAt(0).toUpperCase() + platform.slice(1)}Enable]=N`;
                 } else {
-                    apiUrl += `&fields[ufCrm12PfEnable]=N&fields[ufCrm12BayutEnable]=N&fields[ufCrm12DubizzleEnable]=N&fields[ufCrm12WebsiteEnable]=N&fields[ufCrm12Status]=UNPUBLISHED`;
+                    apiUrl += `&fields[ufCrm6PfEnable]=N&fields[ufCrm6BayutEnable]=N&fields[ufCrm6DubizzleEnable]=N&fields[ufCrm6WebsiteEnable]=N&fields[ufCrm6Status]=UNPUBLISHED`;
                 }
                 break;
 
             case 'archive':
                 if (confirm('Are you sure you want to archive this property?')) {
-                    apiUrl = `${baseUrl}/crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm12Status]=ARCHIVED`;
+                    apiUrl = `${baseUrl}/crm.item.update?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&id=${propertyId}&fields[ufCrm6Status]=ARCHIVED`;
                 } else {
                     reloadRequired = false;
                 }
@@ -222,9 +222,9 @@
                             console.log('Property data for deletion:', property);
 
                             // Delete images from S3
-                            if (property.ufCrm12PhotoLinks && Array.isArray(property.ufCrm12PhotoLinks)) {
-                                console.log('Found photo links:', property.ufCrm12PhotoLinks);
-                                for (const imageUrl of property.ufCrm12PhotoLinks) {
+                            if (property.ufCrm6PhotoLinks && Array.isArray(property.ufCrm6PhotoLinks)) {
+                                console.log('Found photo links:', property.ufCrm6PhotoLinks);
+                                for (const imageUrl of property.ufCrm6PhotoLinks) {
                                     try {
                                         console.log('Attempting to delete image:', imageUrl);
                                         const response = await fetch('./delete-s3-object.php', {
@@ -248,16 +248,16 @@
                             }
 
                             // Delete floorplan from S3 if exists
-                            if (property.ufCrm12FloorPlan) {
+                            if (property.ufCrm6FloorPlan) {
                                 try {
-                                    console.log('Attempting to delete floorplan:', property.ufCrm12FloorPlan);
+                                    console.log('Attempting to delete floorplan:', property.ufCrm6FloorPlan);
                                     const response = await fetch('./delete-s3-object.php', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',
                                         },
                                         body: JSON.stringify({
-                                            fileUrl: property.ufCrm12FloorPlan
+                                            fileUrl: property.ufCrm6FloorPlan
                                         })
                                     });
                                     const result = await response.json();
@@ -266,14 +266,14 @@
                                         console.error(`Failed to delete floorplan: ${result.error}`);
                                     }
                                 } catch (error) {
-                                    console.error(`Error deleting S3 floorplan: ${property.ufCrm12FloorPlan}`, error);
+                                    console.error(`Error deleting S3 floorplan: ${property.ufCrm6FloorPlan}`, error);
                                 }
                             }
 
                             // Delete documents from S3
-                            if (property.ufCrm12Documents && Array.isArray(property.ufCrm12Documents)) {
-                                console.log('Found documents:', property.ufCrm12Documents);
-                                for (const docUrl of property.ufCrm12Documents) {
+                            if (property.ufCrm6Documents && Array.isArray(property.ufCrm6Documents)) {
+                                console.log('Found documents:', property.ufCrm6Documents);
+                                for (const docUrl of property.ufCrm6Documents) {
                                     try {
                                         console.log('Attempting to delete document:', docUrl);
                                         const response = await fetch('./delete-s3-object.php', {
@@ -344,10 +344,10 @@
                 const apiUrl = `${baseUrl}/crm.item.${action === 'delete' ? 'delete' : 'update'}?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}`;
 
                 const platformFieldMapping = {
-                    pf: 'ufCrm12PfEnable',
-                    bayut: 'ufCrm12BayutEnable',
-                    dubizzle: 'ufCrm12DubizzleEnable',
-                    website: 'ufCrm12WebsiteEnable'
+                    pf: 'ufCrm6PfEnable',
+                    bayut: 'ufCrm6BayutEnable',
+                    dubizzle: 'ufCrm6DubizzleEnable',
+                    website: 'ufCrm6WebsiteEnable'
                 };
 
                 // If action is delete, first get all property details to find image URLs
@@ -363,8 +363,8 @@
                                 const property = propertyData.result.item;
 
                                 // Delete images from S3
-                                if (property.ufCrm12PhotoLinks && Array.isArray(property.ufCrm12PhotoLinks)) {
-                                    for (const imageUrl of property.ufCrm12PhotoLinks) {
+                                if (property.ufCrm6PhotoLinks && Array.isArray(property.ufCrm6PhotoLinks)) {
+                                    for (const imageUrl of property.ufCrm6PhotoLinks) {
                                         try {
                                             await fetch('./delete-s3-object.php', {
                                                 method: 'POST',
@@ -382,7 +382,7 @@
                                 }
 
                                 // Delete floorplan from S3 if exists
-                                if (property.ufCrm12FloorPlan) {
+                                if (property.ufCrm6FloorPlan) {
                                     try {
                                         await fetch('./delete-s3-object.php', {
                                             method: 'POST',
@@ -390,17 +390,17 @@
                                                 'Content-Type': 'application/json',
                                             },
                                             body: JSON.stringify({
-                                                fileUrl: property.ufCrm12FloorPlan
+                                                fileUrl: property.ufCrm6FloorPlan
                                             })
                                         });
                                     } catch (error) {
-                                        console.error(`Error deleting S3 floorplan: ${property.ufCrm12FloorPlan}`, error);
+                                        console.error(`Error deleting S3 floorplan: ${property.ufCrm6FloorPlan}`, error);
                                     }
                                 }
 
                                 // Delete documents from S3
-                                if (property.ufCrm12Documents && Array.isArray(property.ufCrm12Documents)) {
-                                    for (const docUrl of property.ufCrm12Documents) {
+                                if (property.ufCrm6Documents && Array.isArray(property.ufCrm6Documents)) {
+                                    for (const docUrl of property.ufCrm6Documents) {
                                         try {
                                             await fetch('./delete-s3-object.php', {
                                                 method: 'POST',
@@ -427,21 +427,21 @@
                     let url = `${apiUrl}&id=${propertyId}`;
 
                     if (action === 'publish') {
-                        url += '&fields[ufCrm12Status]=PUBLISHED';
+                        url += '&fields[ufCrm6Status]=PUBLISHED';
 
                         if (platformFieldMapping[platform]) {
                             url += `&fields[${platformFieldMapping[platform]}]=Y`;
                         } else {
-                            url += `&fields[ufCrm12PfEnable]=Y&fields[ufCrm12BayutEnable]=Y&fields[ufCrm12DubizzleEnable]=Y&fields[ufCrm12WebsiteEnable]=Y`;
+                            url += `&fields[ufCrm6PfEnable]=Y&fields[ufCrm6BayutEnable]=Y&fields[ufCrm6DubizzleEnable]=Y&fields[ufCrm6WebsiteEnable]=Y`;
                         }
                     } else if (action === 'unpublish') {
                         if (platformFieldMapping[platform]) {
                             url += `&fields[${platformFieldMapping[platform]}]=N`;
                         } else {
-                            url += `&fields[ufCrm12PfEnable]=N&fields[ufCrm12BayutEnable]=N&fields[ufCrm12DubizzleEnable]=N&fields[ufCrm12WebsiteEnable]=N&fields[ufCrm12Status]=UNPUBLISHED`;
+                            url += `&fields[ufCrm6PfEnable]=N&fields[ufCrm6BayutEnable]=N&fields[ufCrm6DubizzleEnable]=N&fields[ufCrm6WebsiteEnable]=N&fields[ufCrm6Status]=UNPUBLISHED`;
                         }
                     } else if (action === 'archive') {
-                        url += '&fields[ufCrm12Status]=ARCHIVED';
+                        url += '&fields[ufCrm6Status]=ARCHIVED';
                     }
 
                     return fetch(url, {
@@ -1250,12 +1250,12 @@
             const property = data.result.item;
 
             // Management
-            document.getElementById('reference').value = property.ufCrm12ReferenceNumber;
+            document.getElementById('reference').value = property.ufCrm6ReferenceNumber;
 
             // Landlord 1
-            document.getElementById('landlord_name').value = property.ufCrm12LandlordName;
-            document.getElementById('landlord_email').value = property.ufCrm12LandlordEmail;
-            document.getElementById('landlord_phone').value = property.ufCrm12LandlordContact;
+            document.getElementById('landlord_name').value = property.ufCrm6LandlordName;
+            document.getElementById('landlord_email').value = property.ufCrm6LandlordEmail;
+            document.getElementById('landlord_phone').value = property.ufCrm6LandlordContact;
             // // Landlord 2
             // document.getElementById('landlord_name2').value = property.ufCrm_12_LANDLORD_NAME_2;
             // document.getElementById('landlord_email2').value = property.ufCrm_12_LANDLORD_EMAIL_2;
@@ -1266,73 +1266,73 @@
             // document.getElementById('landlord_phone3').value = property.ufCrm_12_LANDLORD_CONTACT_3;
 
             Array.from(document.getElementById('availability').options).forEach(option => {
-                if (option.value == property.ufCrm12Availability) option.selected = true;
+                if (option.value == property.ufCrm6Availability) option.selected = true;
             });
-            document.getElementById('available_from').value = formatInputDate(property.ufCrm12AvailableFrom);
-            document.getElementById('contract_expiry').value = formatInputDate(property.ufCrm12ContractExpiryDate);
+            document.getElementById('available_from').value = formatInputDate(property.ufCrm6AvailableFrom);
+            document.getElementById('contract_expiry').value = formatInputDate(property.ufCrm6ContractExpiryDate);
 
             // Specifications
-            document.getElementById('title_deed').value = property.ufCrm12TitleDeed;
-            document.getElementById('size').value = property.ufCrm12Size;
-            document.getElementById('unit_no').value = property.ufCrm12UnitNo;
-            document.getElementById('bathrooms').value = property.ufCrm12Bathroom;
-            document.getElementById('parkings').value = property.ufCrm12Parking;
-            document.getElementById('total_plot_size').value = property.ufCrm12TotalPlotSize;
-            document.getElementById('lot_size').value = property.ufCrm12LotSize;
-            document.getElementById('buildup_area').value = property.ufCrm12BuildupArea;
-            document.getElementById('layout_type').value = property.ufCrm12LayoutType;
-            document.getElementById('project_name').value = property.ufCrm12ProjectName;
-            document.getElementById('build_year').value = property.ufCrm12BuildYear;
+            document.getElementById('title_deed').value = property.ufCrm6TitleDeed;
+            document.getElementById('size').value = property.ufCrm6Size;
+            document.getElementById('unit_no').value = property.ufCrm6UnitNo;
+            document.getElementById('bathrooms').value = property.ufCrm6Bathroom;
+            document.getElementById('parkings').value = property.ufCrm6Parking;
+            document.getElementById('total_plot_size').value = property.ufCrm6TotalPlotSize;
+            document.getElementById('lot_size').value = property.ufCrm6LotSize;
+            document.getElementById('buildup_area').value = property.ufCrm6BuildupArea;
+            document.getElementById('layout_type').value = property.ufCrm6LayoutType;
+            document.getElementById('project_name').value = property.ufCrm6ProjectName;
+            document.getElementById('build_year').value = property.ufCrm6BuildYear;
             Array.from(document.getElementById('property_type').options).forEach(option => {
-                if (option.value === property.ufCrm12PropertyType) option.selected = true;
+                if (option.value === property.ufCrm6PropertyType) option.selected = true;
             });
             Array.from(document.getElementById('offering_type').options).forEach(option => {
-                if (option.value === property.ufCrm12OfferingType) option.selected = true;
+                if (option.value === property.ufCrm6OfferingType) option.selected = true;
             });
             Array.from(document.getElementById('bedrooms').options).forEach(option => {
-                if (option.value == property.ufCrm12Bedroom) option.selected = true;
+                if (option.value == property.ufCrm6Bedroom) option.selected = true;
             });
             Array.from(document.getElementById('furnished').options).forEach(option => {
-                if (option.value == property.ufCrm12Furnished) option.selected = true;
+                if (option.value == property.ufCrm6Furnished) option.selected = true;
             });
             Array.from(document.getElementById('project_status').options).forEach(option => {
-                if (option.value == property.ufCrm12ProjectStatus) option.selected = true;
+                if (option.value == property.ufCrm6ProjectStatus) option.selected = true;
             });
             Array.from(document.getElementById('sale_type').options).forEach(option => {
-                if (option.value == property.ufCrm12SaleType) option.selected = true;
+                if (option.value == property.ufCrm6SaleType) option.selected = true;
             });
             Array.from(document.getElementById('ownership').options).forEach(option => {
-                if (option.value == property.ufCrm12Ownership) option.selected = true;
+                if (option.value == property.ufCrm6Ownership) option.selected = true;
             });
 
             // Property Permit
-            document.getElementById('rera_permit_number').value = property.ufCrm12ReraPermitNumber
-            document.getElementById('dtcm_permit_number').value = property.ufCrm12DtcmPermitNumber
-            document.getElementById('rera_issue_date').value = formatInputDate(property.ufCrm12ReraPermitIssueDate);
-            document.getElementById('rera_expiration_date').value = formatInputDate(property.ufCrm12ReraPermitExpirationDate);
+            document.getElementById('rera_permit_number').value = property.ufCrm6ReraPermitNumber
+            document.getElementById('dtcm_permit_number').value = property.ufCrm6DtcmPermitNumber
+            document.getElementById('rera_issue_date').value = formatInputDate(property.ufCrm6ReraPermitIssueDate);
+            document.getElementById('rera_expiration_date').value = formatInputDate(property.ufCrm6ReraPermitExpirationDate);
 
             // Pricing
-            document.getElementById('price').value = property.ufCrm12Price;
-            document.getElementById('payment_method').value = property.ufCrm12PaymentMethod;
-            document.getElementById('downpayment_price').value = property.ufCrm12DownPaymentPrice;
-            document.getElementById('service_charge').value = property.ufCrm12ServiceCharge;
-            property.ufCrm12HidePrice == "Y" ? document.getElementById('hide_price').checked = true : document.getElementById('hide_price').checked = false;
+            document.getElementById('price').value = property.ufCrm6Price;
+            document.getElementById('payment_method').value = property.ufCrm6PaymentMethod;
+            document.getElementById('downpayment_price').value = property.ufCrm6DownPaymentPrice;
+            document.getElementById('service_charge').value = property.ufCrm6ServiceCharge;
+            property.ufCrm6HidePrice == "Y" ? document.getElementById('hide_price').checked = true : document.getElementById('hide_price').checked = false;
             Array.from(document.getElementById('rental_period').options).forEach(option => {
-                if (option.value == property.ufCrm12RentalPeriod) option.selected = true;
+                if (option.value == property.ufCrm6RentalPeriod) option.selected = true;
             });
             Array.from(document.getElementById('cheques').options).forEach(option => {
-                if (option.value == property.ufCrm12NoOfCheques) option.selected = true;
+                if (option.value == property.ufCrm6NoOfCheques) option.selected = true;
             });
             Array.from(document.getElementById('financial_status').options).forEach(option => {
-                if (option.value == property.ufCrm12FinancialStatus) option.selected = true;
+                if (option.value == property.ufCrm6FinancialStatus) option.selected = true;
             });
 
             // Title and Description
-            document.getElementById('title_en').value = property.ufCrm12TitleEn;
-            document.getElementById('description_en').textContent = property.ufCrm12DescriptionEn;
-            document.getElementById('title_ar').value = property.ufCrm12TitleAr;
-            document.getElementById('description_ar').textContent = property.ufCrm12DescriptionAr;
-            document.getElementById('brochure_description_1').textContent = property.ufCrm12BrochureDescription;
+            document.getElementById('title_en').value = property.ufCrm6TitleEn;
+            document.getElementById('description_en').textContent = property.ufCrm6DescriptionEn;
+            document.getElementById('title_ar').value = property.ufCrm6TitleAr;
+            document.getElementById('description_ar').textContent = property.ufCrm6DescriptionAr;
+            document.getElementById('brochure_description_1').textContent = property.ufCrm6BrochureDescription;
             document.getElementById('brochure_description_2').textContent = property.ufCrm_12_BROCHURE_DESCRIPTION_2;
 
             document.getElementById('titleEnCount').textContent = document.getElementById('title_en').value.length;
@@ -1343,41 +1343,41 @@
             document.getElementById('brochureDescription2Count').textContent = document.getElementById('brochure_description_2').textContent.length;
 
             // Location
-            document.getElementById('pf_location').value = property.ufCrm12Location;
-            document.getElementById('pf_city').value = property.ufCrm12City;
-            document.getElementById('pf_community').value = property.ufCrm12Community;
-            document.getElementById('pf_subcommunity').value = property.ufCrm12SubCommunity;
-            document.getElementById('pf_building').value = property.ufCrm12Tower;
-            document.getElementById('bayut_location').value = property.ufCrm12BayutLocation;
-            document.getElementById('bayut_city').value = property.ufCrm12BayutCity;
-            document.getElementById('bayut_community').value = property.ufCrm12BayutCommunity;
-            document.getElementById('bayut_subcommunity').value = property.ufCrm12BayutSubCommunity;
-            document.getElementById('bayut_building').value = property.ufCrm12BayutTower;
+            document.getElementById('pf_location').value = property.ufCrm6Location;
+            document.getElementById('pf_city').value = property.ufCrm6City;
+            document.getElementById('pf_community').value = property.ufCrm6Community;
+            document.getElementById('pf_subcommunity').value = property.ufCrm6SubCommunity;
+            document.getElementById('pf_building').value = property.ufCrm6Tower;
+            document.getElementById('bayut_location').value = property.ufCrm6BayutLocation;
+            document.getElementById('bayut_city').value = property.ufCrm6BayutCity;
+            document.getElementById('bayut_community').value = property.ufCrm6BayutCommunity;
+            document.getElementById('bayut_subcommunity').value = property.ufCrm6BayutSubCommunity;
+            document.getElementById('bayut_building').value = property.ufCrm6BayutTower;
 
-            if (property.ufCrm12Geopoints) {
-                const [latitude, longitude] = property.ufCrm12Geopoints.split(',').map(coord => coord.trim());
+            if (property.ufCrm6Geopoints) {
+                const [latitude, longitude] = property.ufCrm6Geopoints.split(',').map(coord => coord.trim());
                 document.getElementById('latitude').value = latitude;
                 document.getElementById('longitude').value = longitude;
             }
 
             // Photos and Videos
-            document.getElementById('video_tour_url').value = property.ufCrm12VideoTourUrl;
+            document.getElementById('video_tour_url').value = property.ufCrm6VideoTourUrl;
             document.getElementById('360_view_url').value = property.ufCrm_12_360_VIEW_URL;
-            document.getElementById('qr_code_url').value = property.ufCrm12QrCodePropertyBooster;
+            document.getElementById('qr_code_url').value = property.ufCrm6QrCodePropertyBooster;
             // Photos
             // Floor Plan
 
             // Portals
-            property.ufCrm12PfEnable == "Y" ? document.getElementById('pf_enable').checked = true : document.getElementById('pf_enable').checked = false;
-            property.ufCrm12BayutEnable == "Y" ? document.getElementById('bayut_enable').checked = true : document.getElementById('bayut_enable').checked = false;
-            property.ufCrm12DubizzleEnable == "Y" ? document.getElementById('dubizzle_enable').checked = true : document.getElementById('dubizzle_enable').checked = false;
-            property.ufCrm12WebsiteEnable == "Y" ? document.getElementById('website_enable').checked = true : document.getElementById('website_enable').checked = false;
-            property.ufCrm12Watermark == "Y" ? document.getElementById('watermark').checked = true : document.getElementById('watermark').checked = false;
+            property.ufCrm6PfEnable == "Y" ? document.getElementById('pf_enable').checked = true : document.getElementById('pf_enable').checked = false;
+            property.ufCrm6BayutEnable == "Y" ? document.getElementById('bayut_enable').checked = true : document.getElementById('bayut_enable').checked = false;
+            property.ufCrm6DubizzleEnable == "Y" ? document.getElementById('dubizzle_enable').checked = true : document.getElementById('dubizzle_enable').checked = false;
+            property.ufCrm6WebsiteEnable == "Y" ? document.getElementById('website_enable').checked = true : document.getElementById('website_enable').checked = false;
+            property.ufCrm6Watermark == "Y" ? document.getElementById('watermark').checked = true : document.getElementById('watermark').checked = false;
             if (document.getElementById('dubizzle_enable').checked && document.getElementById('bayut_enable').value) {
                 toggle_bayut_dubizzle.checked = true;
             }
 
-            switch (property.ufCrm12Status) {
+            switch (property.ufCrm6Status) {
                 case 'PUBLISHED':
                     document.getElementById('publish').checked = true;
                     break;
@@ -1413,9 +1413,9 @@
                 }
             }
 
-            ensureOptionExistsAndSelect('listing_agent', property.ufCrm12AgentId, property.ufCrm12AgentName);
-            ensureOptionExistsAndSelect('listing_owner', property.ufCrm12ListingOwner, property.ufCrm12ListingOwner);
-            ensureOptionExistsAndSelect('developer', property.ufCrm12Developers, property.ufCrm12Developers);
+            ensureOptionExistsAndSelect('listing_agent', property.ufCrm6AgentId, property.ufCrm6AgentName);
+            ensureOptionExistsAndSelect('listing_owner', property.ufCrm6ListingOwner, property.ufCrm6ListingOwner);
+            ensureOptionExistsAndSelect('developer', property.ufCrm6Developers, property.ufCrm6Developers);
 
             // Notes
             function addExistingNote(note) {
@@ -1431,8 +1431,8 @@
                 updateNotesInput();
             }
 
-            if (property.ufCrm12Notes.length > 0) {
-                property.ufCrm12Notes.forEach(note => {
+            if (property.ufCrm6Notes.length > 0) {
+                property.ufCrm6Notes.forEach(note => {
                     addExistingNote(note);
                 });
             }
@@ -1458,8 +1458,8 @@
                 updateAmenitiesInput();
             }
 
-            if (property.ufCrm12Amenities && property.ufCrm12Amenities.length > 0) {
-                property.ufCrm12Amenities.forEach(amenity => {
+            if (property.ufCrm6Amenities && property.ufCrm6Amenities.length > 0) {
+                property.ufCrm6Amenities.forEach(amenity => {
                     addExistingAmenity(amenity);
                 });
             }

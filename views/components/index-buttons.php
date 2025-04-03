@@ -160,7 +160,7 @@
     }
 
     fetchProperties(currentPage, {
-      'ufCrm12Status': filterKey
+      'ufCrm6Status': filterKey
     });
 
     document.querySelector('#clearFiltersBtn').classList.remove('d-none');

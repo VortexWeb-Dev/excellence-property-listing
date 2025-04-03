@@ -35,24 +35,24 @@ function sanitizeFileName($filename)
 }
 
 // Prepare data
-$file_name     = !empty($property['ufCrm12ReferenceNumber'])
-  ? sanitizeFileName($property['ufCrm12ReferenceNumber']) . ".pdf"
+$file_name     = !empty($property['ufCrm6ReferenceNumber'])
+  ? sanitizeFileName($property['ufCrm6ReferenceNumber']) . ".pdf"
   : "Property_$id.pdf";
 
-$title         = $property['ufCrm12TitleEn']       ?? "No Title";
-$price         = !empty($property['ufCrm12Price']) ? "AED " . $property['ufCrm12Price'] : "Not Available";
-$refId         = $property['ufCrm12ReferenceNumber'] ?? "";
-$location      = $property['ufCrm12Location']      ?? "Unknown";
-$description   = $property['ufCrm12DescriptionEn'] ?? "No Description";
-$images        = $property['ufCrm12PhotoLinks']    ?? [];
+$title         = $property['ufCrm6TitleEn']       ?? "No Title";
+$price         = !empty($property['ufCrm6Price']) ? "AED " . $property['ufCrm6Price'] : "Not Available";
+$refId         = $property['ufCrm6ReferenceNumber'] ?? "";
+$location      = $property['ufCrm6Location']      ?? "Unknown";
+$description   = $property['ufCrm6DescriptionEn'] ?? "No Description";
+$images        = $property['ufCrm6PhotoLinks']    ?? [];
 $mainImage     = isset($images[0]) ? $images[0] : '';
-$size          = $property['ufCrm12Size']          ?? "0";
-$bedrooms      = $property['ufCrm12Bedroom']       ?? "0";
-$bathrooms     = $property['ufCrm12Bathroom']      ?? "0";
-$propertyType  = $property['ufCrm12PropertyType']  ?? "Unknown";
-$offeringType = $property['ufCrm12OfferingType'] ?? "Unknown";
-$availability  = $property['ufCrm12Availability']  ?? "Unknown";
-$geopoints     = $property['ufCrm12Geopoints']     ?? null;
+$size          = $property['ufCrm6Size']          ?? "0";
+$bedrooms      = $property['ufCrm6Bedroom']       ?? "0";
+$bathrooms     = $property['ufCrm6Bathroom']      ?? "0";
+$propertyType  = $property['ufCrm6PropertyType']  ?? "Unknown";
+$offeringType = $property['ufCrm6OfferingType'] ?? "Unknown";
+$availability  = $property['ufCrm6Availability']  ?? "Unknown";
+$geopoints     = $property['ufCrm6Geopoints']     ?? null;
 
 // Company info
 $companyLogoPath = __DIR__ . "/assets/images/company-logo.png";
@@ -62,14 +62,14 @@ $companyWebsite = "https://excellence-ambassadors.ae/";
 
 // Agent/Owner info
 if ($type === 'agent') {
-  $agentName  = $property['ufCrm12AgentName']  ?? "Agent Name";
-  $agentEmail = $property['ufCrm12AgentEmail'] ?? "agent@example.com";
-  $agentPhone = $property['ufCrm12AgentPhone'] ?? "+971 58 175 7383";
+  $agentName  = $property['ufCrm6AgentName']  ?? "Agent Name";
+  $agentEmail = $property['ufCrm6AgentEmail'] ?? "agent@example.com";
+  $agentPhone = $property['ufCrm6AgentPhone'] ?? "+971 58 175 7383";
 } elseif ($type === 'owner') {
-  $agentName  = $property['ufCrm12ListingOwner'] ?? "Owner Name";
+  $agentName  = $property['ufCrm6ListingOwner'] ?? "Owner Name";
   // Attempt to fetch owner details from Bitrix
   $userResponse = CRest::call("user.get", [
-    "filter" => ["NAME" => $property['ufCrm12ListingOwner']]
+    "filter" => ["NAME" => $property['ufCrm6ListingOwner']]
   ]);
   $owner       = $userResponse['result'][0] ?? [];
   $agentEmail  = $owner["EMAIL"]          ?? "owner@example.com";
@@ -84,7 +84,7 @@ if ($type === 'agent') {
 }
 
 // Amenities
-$amenities = $property['ufCrm12Amenities'] ?? [];
+$amenities = $property['ufCrm6Amenities'] ?? [];
 
 // Function to convert image to Base64
 function imageToBase64($path)

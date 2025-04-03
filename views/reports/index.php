@@ -95,12 +95,12 @@
         // Fetch data for Apex Doughnut Chart
         let baseUrl = API_BASE_URL;
         let properties = [];
-        const response = await fetch(`${baseUrl}/crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&select[0]=ufCrm12OfferingType&select[1]=ufCrm12PfEnable&select[2]=ufCrm12BayutEnable&select[3]=ufCrm12DubizzleEnable&select[4]=ufCrm12WebsiteEnable`);
+        const response = await fetch(`${baseUrl}/crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&select[0]=ufCrm6OfferingType&select[1]=ufCrm6PfEnable&select[2]=ufCrm6BayutEnable&select[3]=ufCrm6DubizzleEnable&select[4]=ufCrm6WebsiteEnable`);
         const data = await response.json();
         const totalOwners = data.total;
 
         for (let i = 0; i < Math.ceil(totalOwners / 50); i++) {
-            const response = await fetch(`${baseUrl}/crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&select[0]=ufCrm12OfferingType&select[1]=ufCrm12PfEnable&select[2]=ufCrm12BayutEnable&select[3]=ufCrm12DubizzleEnable&select[4]=ufCrm12WebsiteEnable&start=${i * 50}`);
+            const response = await fetch(`${baseUrl}/crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&select[0]=ufCrm6OfferingType&select[1]=ufCrm6PfEnable&select[2]=ufCrm6BayutEnable&select[3]=ufCrm6DubizzleEnable&select[4]=ufCrm6WebsiteEnable&start=${i * 50}`);
             const data = await response.json();
             properties = properties.concat(data.result.items);
         }
@@ -120,24 +120,24 @@
         let commercialWebsite = 0;
 
         properties.forEach(property => {
-            if (property['ufCrm12OfferingType'] === 'RS' || property['offeringType'] === 'RR') {
+            if (property['ufCrm6OfferingType'] === 'RS' || property['offeringType'] === 'RR') {
                 // Residential
-                if (property['ufCrm12PfEnable']) residentialPropertyFinder++;
-                if (property['ufCrm12BayutEnable']) residentialBayut++;
-                if (property['ufCrm12DubizzleEnable']) residentialDubizzle++;
-                if (property['ufCrm12WebsiteEnable']) residentialWebsite++;
-                if (property['ufCrm12OfferingType'] === 'RS') {
+                if (property['ufCrm6PfEnable']) residentialPropertyFinder++;
+                if (property['ufCrm6BayutEnable']) residentialBayut++;
+                if (property['ufCrm6DubizzleEnable']) residentialDubizzle++;
+                if (property['ufCrm6WebsiteEnable']) residentialWebsite++;
+                if (property['ufCrm6OfferingType'] === 'RS') {
                     residentialSale++;
                 } else {
                     residentialRent++;
                 }
-            } else if (property['ufCrm12OfferingType'] === 'CS' || property['offeringType'] === 'CR') {
+            } else if (property['ufCrm6OfferingType'] === 'CS' || property['offeringType'] === 'CR') {
                 // Commercial
-                if (property['ufCrm12PfEnable']) commercialPropertyFinder++;
-                if (property['ufCrm12BayutEnable']) commercialBayut++;
-                if (property['ufCrm12DubizzleEnable']) commercialDubizzle++;
-                if (property['ufCrm12WebsiteEnable']) commercialWebsite++;
-                if (property['ufCrm12OfferingType'] === 'CS') {
+                if (property['ufCrm6PfEnable']) commercialPropertyFinder++;
+                if (property['ufCrm6BayutEnable']) commercialBayut++;
+                if (property['ufCrm6DubizzleEnable']) commercialDubizzle++;
+                if (property['ufCrm6WebsiteEnable']) commercialWebsite++;
+                if (property['ufCrm6OfferingType'] === 'CS') {
                     commercialSale++;
                 } else {
                     commercialRent++;

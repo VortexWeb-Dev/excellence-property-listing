@@ -201,23 +201,23 @@
         }
 
         const fieldMappings = {
-            'city': '%ufCrm12City',
-            'community': '%ufCrm12Community',
-            'subCommunity': '%ufCrm12SubCommunity',
-            'building': '%ufCrm12Tower',
-            'reference': 'ufCrm12ReferenceNumber',
-            'permit': 'ufCrm12ReraPermitNumber',
-            'listing_title': '%ufCrm12TitleEn',
-            'property_type': 'ufCrm12PropertyType',
-            'saleRent': 'ufCrm12OfferingType',
-            'listing_agent': '%ufCrm12AgentName',
-            'developer': '%ufCrm12Developers',
-            'listing_owner': '%ufCrm12ListingOwner',
-            'landlordEmail': '%ufCrm12LandlordEmail',
-            'landlordPhone': '%ufCrm12LandlordContact',
-            'bedrooms': 'ufCrm12Bedroom',
-            'bathrooms': 'ufCrm12Bathroom',
-            'price': 'ufCrm12Price',
+            'city': '%ufCrm6City',
+            'community': '%ufCrm6Community',
+            'subCommunity': '%ufCrm6SubCommunity',
+            'building': '%ufCrm6Tower',
+            'reference': 'ufCrm6ReferenceNumber',
+            'permit': 'ufCrm6ReraPermitNumber',
+            'listing_title': '%ufCrm6TitleEn',
+            'property_type': 'ufCrm6PropertyType',
+            'saleRent': 'ufCrm6OfferingType',
+            'listing_agent': '%ufCrm6AgentName',
+            'developer': '%ufCrm6Developers',
+            'listing_owner': '%ufCrm6ListingOwner',
+            'landlordEmail': '%ufCrm6LandlordEmail',
+            'landlordPhone': '%ufCrm6LandlordContact',
+            'bedrooms': 'ufCrm6Bedroom',
+            'bathrooms': 'ufCrm6Bathroom',
+            'price': 'ufCrm6Price',
             'portal': 'portal'
         }
 
@@ -231,13 +231,13 @@
 
         if (filterParams['portal']) {
             if (filterParams['portal'] == 'PF') {
-                filterParams['ufCrm12PfEnable'] = 1
+                filterParams['ufCrm6PfEnable'] = 1
             } else if (filterParams['portal'] == 'BAYUT') {
-                filterParams['ufCrm12BayutEnable'] = 1
+                filterParams['ufCrm6BayutEnable'] = 1
             } else if (filterParams['portal'] == 'DUBIZZLE') {
-                filterParams['ufCrm12DubizzleEnable'] = 1
+                filterParams['ufCrm6DubizzleEnable'] = 1
             } else if (filterParams['portal'] == 'WEBSITE') {
-                filterParams['ufCrm12WebsiteEnable'] = 1
+                filterParams['ufCrm6WebsiteEnable'] = 1
             }
             delete filterParams['portal'];
         }
