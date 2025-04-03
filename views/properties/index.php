@@ -260,7 +260,7 @@
                             ${property.ufCrm6PfEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/pf.png" alt="Property Finder" title="Property Finder">' : ''}
                             ${property.ufCrm6BayutEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/bayut.png" alt="Bayut" title="Bayut">' : ''}
                             ${property.ufCrm6DubizzleEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/dubizzle.png" alt="Dubizzle" title="Dubizzle">' : ''}
-                            ${property.ufCrm6WebsiteEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover" src="assets/images/company-logo.png" alt="Excellence Ambassadors Real Estate" title="Excellence Ambassadors Real Estate">' : ''}
+                            ${property.ufCrm6WebsiteEnable === "Y" ? '<img class="w-8 h-8 rounded-full object-cover bg-black" src="assets/images/company-logo.webp" alt="Excellence Ambassadors Real Estate" title="Excellence Ambassadors Real Estate">' : ''}
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">

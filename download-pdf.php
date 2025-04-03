@@ -55,7 +55,7 @@ $availability  = $property['ufCrm6Availability']  ?? "Unknown";
 $geopoints     = $property['ufCrm6Geopoints']     ?? null;
 
 // Company info
-$companyLogoPath = __DIR__ . "/assets/images/company-logo.png";
+$companyLogoPath = __DIR__ . "/assets/images/company-logo.webp";
 $companyName    = "Excellence Ambassadors Real Estate";
 $companyAddress = "The H Hotel, Office N 901-902, Sheikh Zayed Road, Dubai, UAE";
 $companyWebsite = "https://excellence-ambassadors.ae/";
