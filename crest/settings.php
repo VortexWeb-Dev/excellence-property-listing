@@ -1,7 +1,7 @@
 <?php
 define('WEB_HOOK_URL', 'https://exxcellenceambassadorsrealestate.bitrix24.com/rest/8/oon3qobf762aodpr/');
-define('C_REST_CLIENT_ID', 'local.67d0341c407f74.25967800');
-define('C_REST_CLIENT_SECRET', '8ubLbmDEmlHaZhnXMwZ39Sd5CTvAquSG6xeo2s0VIpiABtnOV9');
+define('C_REST_CLIENT_ID', 'local.67ee645ed2e484.80644178');
+define('C_REST_CLIENT_SECRET', 'QJSuR2niNtCXmtI3iLIOd28J5RrCl7FH7kL0YyJCRGUre3CCfY');
 
 define('DEVELOPERS_ENTITY_TYPE_ID', 1052);
 define('AGENTS_ENTITY_TYPE_ID', 1040);
