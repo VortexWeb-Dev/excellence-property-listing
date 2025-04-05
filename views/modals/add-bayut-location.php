@@ -102,11 +102,11 @@
         data.building = data.building.trim();
 
         const fields = {
-            "ufCrm6Location": data.location,
-            "ufCrm6City": data.city,
-            "ufCrm6Community": data.community,
-            "ufCrm6SubCommunity": data.subCommunity,
-            "ufCrm6Building": data.building,
+            "ufCrm12Location": data.location,
+            "ufCrm12City": data.city,
+            "ufCrm12Community": data.community,
+            "ufCrm12SubCommunity": data.subCommunity,
+            "ufCrm12Building": data.building,
         };
 
         addItem(BAYUT_LOCATIONS_ENTITY_ID, fields);
