@@ -862,11 +862,11 @@ function getUser($filter)
 function isAdmin($userId)
 {
     $admins = [
-        10, // VortexWeb
+        8, // VortexWeb
+        24, // Hanane Addar
     ];
 
-    // return in_array($userId, $admins);
-    return true;
+    return in_array($userId, $admins);
 }
 
 
