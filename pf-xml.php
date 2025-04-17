@@ -56,7 +56,7 @@ $fields = [
     'ufCrm6WebsiteEnable',
     'updatedTime',
     'ufCrm6TitleDeed',
-    'ufCrm6Amenities',
+    'ufCrm6PrivateAmenities',
     'ufCrm6Watermark',
 ];
 

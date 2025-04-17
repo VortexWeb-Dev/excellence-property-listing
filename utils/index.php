@@ -496,7 +496,7 @@ function formatAmenities($property)
         'MZ'
     ];
 
-    $amenities = $property['ufCrm6Amenities'] ?? [];
+    $amenities = $property['ufCrm6PrivateAmenities'] ?? [];
 
     $private_xml = '<private_amenities>';
     $commercial_xml = '<commercial_amenities>';
@@ -807,9 +807,9 @@ function generateBayutXml($properties)
         }
         $xml .= '</Images>';
 
-        if (!empty($property['ufCrm6Amenities']) && is_array($property['ufCrm6Amenities'])) {
+        if (!empty($property['ufCrm6PrivateAmenities']) && is_array($property['ufCrm6PrivateAmenities'])) {
             $xml .= '<Features>';
-            foreach ($property['ufCrm6Amenities'] as $amenity) {
+            foreach ($property['ufCrm6PrivateAmenities'] as $amenity) {
                 $fullName = getFullAmenityName(trim($amenity));
                 $xml .= '<Feature><![CDATA[' . $fullName . ']]></Feature>';
             }

@@ -84,7 +84,7 @@ if ($type === 'agent') {
 }
 
 // Amenities
-$amenities = $property['ufCrm6Amenities'] ?? [];
+$amenities = $property['ufCrm6PrivateAmenities'] ?? [];
 
 // Function to convert image to Base64
 function imageToBase64($path)

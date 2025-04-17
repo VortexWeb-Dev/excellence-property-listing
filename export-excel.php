@@ -67,7 +67,7 @@ $response = CRest::call('crm.item.list', [
         "ufCrm_12_BROCHURE_DESCRIPTION_2",
         "ufCrm6PhotoLinks",
         "ufCrm6Notes",
-        "ufCrm6Amenities",
+        "ufCrm6PrivateAmenities",
         "ufCrm6Price",
         "ufCrm6Status",
         "ufCrm6HidePrice",
