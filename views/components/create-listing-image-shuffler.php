@@ -71,25 +71,24 @@
 
         // Common function to handle files (from input or drop)
         function handleFiles(files) {
-            if (files.length < 3) {
-                document.getElementById("photosMessage").classList.remove('hidden');
-                document.getElementById("photosMessage").textContent = `Please select at least 3 images. You have selected ${files.length}.`;
+            const messageEl = document.getElementById("photosMessage");
+
+            if (files.length < 3 && selectedFiles.length === 0) {
+                messageEl.classList.remove('hidden');
+                messageEl.textContent = `Please select at least 3 images. You have selected ${files.length}.`;
                 return;
             }
 
-            selectedFiles = [];
-            imageLinks = [];
-            document.getElementById("photosMessage").classList.remove('hidden');
-            document.getElementById("photosMessage").classList.remove('text-red-500');
-            document.getElementById("photosMessage").classList.add('text-blue-500');
-            document.getElementById("photosMessage").textContent = `Loading images...`;
+            messageEl.classList.remove('hidden', 'text-red-500');
+            messageEl.classList.add('text-blue-500');
+            messageEl.textContent = `Loading images...`;
 
-            files.forEach((file) => {
+            Array.from(files).forEach((file) => {
                 if (file.size >= 10 * 1024 * 1024) {
-                    document.getElementById("photosMessage").classList.remove('hidden');
-                    document.getElementById("photosMessage").classList.add('text-red-500');
-                    document.getElementById("photosMessage").textContent = `The file "${file.name}" is too large (10MB or greater).`;
-                } else if (!selectedFiles.some((f) => f.name === file.name)) {
+                    messageEl.classList.remove('text-blue-500');
+                    messageEl.classList.add('text-red-500');
+                    messageEl.textContent = `The file "${file.name}" is too large (10MB or greater).`;
+                } else if (!selectedFiles.some((f) => f.name === file.name && f.size === file.size)) {
                     selectedFiles.push(file);
                 }
             });
