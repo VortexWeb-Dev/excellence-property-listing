@@ -172,7 +172,7 @@
                     }
 
                     addUrl += `&fields[ufCrm6TitleEn]=${encodeURIComponent(property.ufCrm6TitleEn + ' (Duplicate)')}`;
-                    addUrl += `&fields[ufCrm6ReferenceNumber]=${encodeURIComponent(property.ufCrm6ReferenceNumber) + '-duplicate'}`;
+                    addUrl += `&fields[ufCrm6ReferenceNumber]=${await getNewReference(property.ufCrm6OfferingType)}`;
                     addUrl += `&fields[ufCrm6Status]=DRAFT`;
 
                     await fetch(addUrl, {
@@ -1432,6 +1432,40 @@
     function sqftToSqm(sqft) {
         const sqm = sqft * 0.092903;
         return parseFloat(sqm.toFixed(2));
+    }
+
+    async function getNewReference(offeringType) {
+        const prefix = (offeringType === "RR" || offeringType === "CR") ? "EARA-R-" : "EARA-S-";
+        const url = `${API_BASE_URL}crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&order[id]=desc&select[]=ufCrm6ReferenceNumber`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const seriesItems = data.result.items.filter(item =>
+                item.ufCrm6ReferenceNumber?.startsWith(prefix)
+            );
+
+            if (!seriesItems.length) {
+                return `${prefix}0001`;
+            }
+
+            // Find the highest number in the existing references
+            const highestNumber = seriesItems.reduce((max, item) => {
+                const regex = new RegExp(`^${prefix}(\\d{4})$`);
+                const match = item.ufCrm6ReferenceNumber.match(regex);
+                if (match) {
+                    const num = parseInt(match[1], 10);
+                    return Math.max(max, num);
+                }
+                return max;
+            }, 0);
+
+            const nextNumber = String(highestNumber + 1).padStart(4, '0');
+            return `${prefix}${nextNumber}`;
+        } catch (error) {
+            console.error('Error fetching reference:', error);
+            return null;
+        }
     }
 </script>
 
