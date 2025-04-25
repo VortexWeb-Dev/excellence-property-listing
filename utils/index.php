@@ -558,7 +558,7 @@ function generatePfXml($properties)
         $xml .= formatField('build_year', $property['ufCrm6BuildYear']);
         $xml .= formatField('parking', $property['ufCrm6Parking']);
         $xml .= formatFurnished($property);
-        $xml .= formatField('view360', $property['ufCrm_12_360_VIEW_URL']);
+        $xml .= formatField('view360', $property['ufCrm_6_360_VIEW_URL']);
 
         $watermark = ($property['ufCrm6Watermark'] === 'Y' || $property['ufCrm6Watermark'] === null) ? 'Y' : 'N';
         $xml .= formatPhotos($property['ufCrm6PhotoLinks'], $watermark === 'Y');
@@ -683,7 +683,7 @@ function generateWebsiteXml($properties)
         // $xml .= formatField('build_year', $property['ufCrm6BuildYear']);
         // $xml .= formatField('parking', $property['ufCrm6Parking']);
         // $xml .= formatFurnished($property);
-        // $xml .= formatField('view360', $property['ufCrm_12_360_VIEW_URL']);
+        // $xml .= formatField('view360', $property['ufCrm_6_360_VIEW_URL']);
         // $xml .= formatField('floor_plan', $property['ufCrm6FloorPlan']);
         // $xml .= formatGeopoints($property);
         // $xml .= formatField('availability_date', $property['ufCrm6AvailableFrom'], 'date');

@@ -1278,7 +1278,7 @@
 
             // Photos and Videos
             document.getElementById('video_tour_url').value = property.ufCrm6VideoTourUrl;
-            document.getElementById('360_view_url').value = property.ufCrm_12_360_VIEW_URL;
+            document.getElementById('360_view_url').value = property.ufCrm_6_360_VIEW_URL;
             document.getElementById('qr_code_url').value = property.ufCrm6QrCodePropertyBooster;
             // Photos
             // Floor Plan
