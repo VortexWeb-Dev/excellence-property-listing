@@ -1460,8 +1460,30 @@
                 return max;
             }, 0);
 
-            const nextNumber = String(highestNumber + 1).padStart(4, '0');
-            return `${prefix}${nextNumber}`;
+            let nextNumber = String(highestNumber + 1).padStart(4, '0');
+            let newReference = `${prefix}${nextNumber}`;
+
+            // Check if the reference already exists using API call
+            const checkUrl = `${API_BASE_URL}crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&filter[ufCrm6ReferenceNumber]=${newReference}&select[]=ufCrm6ReferenceNumber`;
+
+            const checkResponse = await fetch(checkUrl);
+            const checkData = await checkResponse.json();
+
+            // If the reference exists, increment and check again
+            while (checkData.result.items.length > 0) {
+                nextNumber = String(parseInt(nextNumber, 10) + 1).padStart(4, '0');
+                newReference = `${prefix}${nextNumber}`;
+
+                // Make the check API call again with the new reference
+                const retryCheckResponse = await fetch(`${API_BASE_URL}crm.item.list?entityTypeId=${LISTINGS_ENTITY_TYPE_ID}&filter[ufCrm6ReferenceNumber]=${newReference}&select[]=ufCrm6ReferenceNumber`);
+                const retryCheckData = await retryCheckResponse.json();
+
+                if (retryCheckData.result.items.length === 0) {
+                    break;
+                }
+            }
+
+            return newReference;
         } catch (error) {
             console.error('Error fetching reference:', error);
             return null;
