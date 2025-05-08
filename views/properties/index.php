@@ -46,10 +46,8 @@
     <?php include 'views/modals/filter.php'; ?>
     <?php include 'views/modals/refresh-listing.php'; ?>
     <?php
-    if ($isAdmin) {
-        include 'views/modals/transfer-to-agent.php';
-        include 'views/modals/transfer-to-owner.php';
-    }
+    include 'views/modals/transfer-to-agent.php';
+    include 'views/modals/transfer-to-owner.php';
     ?>
 </div>
 
@@ -328,6 +326,23 @@
             default:
                 return '<span class="inline-flex items-center gap-x-1.5 py-1.5 px-2 border rounded-full text-xs font-medium bg-gray-50 text-gray-800">' + status + '</span>';
         }
+    }
+
+    // Function to calculate square meters
+    function sqftToSqm(sqft) {
+        const sqm = sqft * 0.092903;
+        return parseFloat(sqm.toFixed(2));
+    }
+
+    // Format date
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        };
+        return date.toLocaleDateString('en-US', options);
     }
 
     fetchProperties(currentPage);

@@ -15,6 +15,7 @@
                         <select id="listing_agent" name="listing_agent" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required>
                             <option value="">Please select</option>
                             <?php
+                            define('C_REST_WEB_HOOK_URL', 'https://exxcellenceambassadorsrealestate.bitrix24.com/rest/8/oon3qobf762aodpr/');
                             $agents_result = CRest::call('crm.item.list', [
                                 'entityTypeId' => AGENTS_ENTITY_TYPE_ID,
                                 'select' => ['ufCrm8AgentId', 'ufCrm8AgentName']
@@ -79,20 +80,22 @@
         if (!agent) return console.error('Agent not found');
 
         const fields = {
-            "ufCrm8AgentId": agent.ufCrm8AgentId,
-            "ufCrm8AgentName": agent.ufCrm8AgentName,
-            "ufCrm8AgentEmail": agent.ufCrm8AgentEmail,
-            "ufCrm8AgentPhone": agent.ufCrm8AgentMobile,
-            "ufCrm8AgentPhoto": agent.ufCrm8AgentPhoto,
-            "ufCrm8AgentLicense": agent.ufCrm8AgentLicense
+            "ufCrm6AgentId": agent.ufCrm8AgentId,
+            "ufCrm6AgentName": agent.ufCrm8AgentName,
+            "ufCrm6AgentEmail": agent.ufCrm8AgentEmail,
+            "ufCrm6AgentPhone": agent.ufCrm8AgentMobile,
+            "ufCrm6AgentPhoto": agent.ufCrm8AgentPhoto,
+            "ufCrm6AgentLicense": agent.ufCrm8AgentLicense
         };
 
-        const propertyIds = formData.get('transferAgentPropertyIds').split(',');
+        const propertyIds = formData.get('transferAgentPropertyIds').split(',') || JSON.parse(localStorage.getItem('transferAgentPropertyIds')) || [];
 
         for (const id of propertyIds) {
             await updateItem(LISTINGS_ENTITY_TYPE_ID, fields, Number(id));
         }
 
-        window.location.href = '?page=properties';
+        localStorage.removeItem('transferAgentPropertyIds');
+
+        window.location.replace('?page=properties');
     }
 </script>
