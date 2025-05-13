@@ -66,7 +66,10 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    fields,
+                    fields: {
+                        ...fields,
+                        'ufCrm6ReferenceNumber': await getNewReference(fields.ufCrm6OfferingType)
+                    },
                 }),
             });
 
